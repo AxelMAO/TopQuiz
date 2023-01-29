@@ -13,16 +13,44 @@ public class MainActivity extends AppCompatActivity {
     private EditText mNameEditText;
     private Button mPlayButton;
 
-    mGreetingTextView = findViewById(R.id.main_textview_greeting);
-    mNameEditText = findViewById(R.id.main_edittext_name);
-    mPlayButton = findViewById(R.id.main_button_play);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mGreetingTextView = findViewById(R.id.main_textview_greeting);
+        mNameEditText = findViewById(R.id.main_edittext_name);
+        mPlayButton = findViewById(R.id.main_button_play);
+
         mPlayButton.setEnabled(false);
+
+        mNameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This is where we'll check the user input
+                mPlayButton.setEnabled(!s.toString().isEmpty());
+            }
+        });
+
+        mPlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // The user just clicked
+            }
+        });
+
+
     }
 
 }

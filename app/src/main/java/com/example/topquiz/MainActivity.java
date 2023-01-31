@@ -3,6 +3,9 @@ package com.example.topquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-                // This is where we'll check the user input
-                mPlayButton.setEnabled(!s.toString().isEmpty());
+            public void afterTextChanged(Editable editable) {
+                mPlayButton.setEnabled(!editable.toString().isEmpty());
+
             }
+
+
         });
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
